@@ -1,11 +1,10 @@
-var fs = require('fs')
-var request = require('request')
+const fs = require('fs'), request = require('request')
 // import img from "./public/NaikeIdent.png";
 
-let uri, path;
+let uri;
 // Get from html request (GET)
-uri = 'https://www.google.com/images/srpr/logo3w.png'; 
-path = './src/assets/result.png';
+uri = 'https://images.unsplash.com/photo-1484100356142-db6ab6244067?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHJhbmRvbXxlbnwwfHwwfHw%3D&w=1000&q=80'; 
+const path = './src/assets/result.png';
 // Manage import images
 const download = (uri, filename, callback) =>{
     request.head(uri, (err, res, body) =>{
