@@ -1,0 +1,128 @@
+:root {
+  --purple-color: #432093;
+  --white-color: white;
+  --blue-color: #90dafd;
+  --bluedark-color: #0a0aff;
+  --purpledark-color: #22104c;
+  /*Tipografia*/
+  --normal: 14px;
+  /*Tipografia*/
+  --space: 10px;
+  /*box shadow*/
+  --box: 0 0 2 px #888686;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  height: 100vh;
+
+  background-image: linear-gradient(var(--blue-color), var(--purple-color));
+}
+
+nav {
+  display: flex;
+  padding-top: 20px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10% 0 10%;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav li {
+  padding-left: 20px;
+  list-style: none;
+}
+
+nav li a {
+  color: var(--purple-color);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+nav li a:hover {
+  color: var(--bluedark-color);
+}
+
+.intro {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 0%;
+  justify-content: space-between;
+  margin: 0 10% 0 10%;
+}
+.intro .content {
+  text-align: left;
+}
+
+.main_button {
+  background-color: var(--bluedark-color);
+  padding: var(--space);
+  font-size: var(--normal);
+  color: var(--purpledark-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: center;
+  width: 160px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main_button {
+  text-decoration: none;
+  color: white;
+}
+
+.main_button a {
+  text-decoration: none;
+  color: white;
+}
+
+.main_button:hover {
+  background-color: var(--blue-color);
+}
+
+.content .img_content img {
+  width: 70px;
+  height: 70px;
+}
+
+.diferenciales{
+    padding: 30px;
+}
+
+.imgTennis{
+    width: 150%;
+    vertical-align: center;
+
+}
+
+#parent {
+  display: flex;
+}
+#narrow {
+  display: inline-block;
+  text-align: center;
+  width: 30%;
+  vertical-align: center;
+  margin: 0 1.5%;
+  padding: 10% 20px;
+}
+#image {
+  flex: 1;
+  
+  
+}
