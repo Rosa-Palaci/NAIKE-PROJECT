@@ -12,6 +12,8 @@ const urls = [
   "./assets/Rainbow.svg",
 ];
 
+let likedUrls = "A shoe texture for someone who likes: ";
+
 // variables
 let cardCount = 0;
 
@@ -24,8 +26,11 @@ function appendNewCard() {
       like.style.animationPlayState = "running";
       like.classList.toggle("trigger");
       const currentUrl = urls[cardCount % 5];
-      likedUrls.push(currentUrl);
-      pushLikedUrls();
+      likedUrls +=
+        urls[cardCount % 5].substring(9, urls[cardCount % 5].length - 4) + " ";
+      if (cardCount === 5) {
+        apiHandler(likedUrls);
+      }
     },
     onDislike: () => {
       dislike.style.animationPlayState = "running";
@@ -41,29 +46,26 @@ function appendNewCard() {
   });
 }
 
-function pushLikedUrls() {
-  fetch("/likedUrls", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ urls: likedUrls }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log("Liked URLs pushed successfully:", data);
-    })
-    .catch((error) => {
-      console.error("Error pushing liked URLs:", error);
-    });
-}
-
 // first 5 cards
 for (let i = 0; i < 5; i++) {
   appendNewCard();
+}
+
+// Api handler
+async function apiHandler(text) {
+  // Query and image generated.
+
+  // Response from the Api.
+  response = await fetch("http://20.234.7.9/generate", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      prompt: text,
+    }),
+  })
+    .then((response) => response.json())
+    .then((response) => console.log(response.message));
 }
