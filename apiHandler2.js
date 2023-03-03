@@ -21,4 +21,4 @@ async function apiHandler(text){
     .then(response => console.log(response.message))
 }
 
-apiHandler('Dog')
+apiHandler('Phone_Yellow Rabbit Rainbow')
