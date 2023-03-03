@@ -1,5 +1,5 @@
-var fs = require('fs'),
-    request = require('request');
+import fs from 'fs'
+import request from 'request'
 // import img from "./public/NaikeIdent.png";
 
 let uri;
@@ -16,4 +16,4 @@ const download = (filename, callback) => {
   });
 };
 
-download(uri, path, () => console.log("done"));
+download(path, () => console.log("done"));
