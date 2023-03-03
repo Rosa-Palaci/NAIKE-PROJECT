@@ -12,8 +12,6 @@ const urls = [
   "./assets/Rainbow.svg",
 ];
 
-const likedImages = []
-
 // variables
 let cardCount = 0;
 
@@ -25,7 +23,9 @@ function appendNewCard() {
     onLike: () => {
       like.style.animationPlayState = "running";
       like.classList.toggle("trigger");
-      likedImages.push(imageUrl) 
+      const currentUrl = urls[cardCount % 5];
+      likedUrls.push(currentUrl);
+      pushLikedUrls();
     },
     onDislike: () => {
       dislike.style.animationPlayState = "running";
@@ -41,10 +41,29 @@ function appendNewCard() {
   });
 }
 
+function pushLikedUrls() {
+  fetch("/likedUrls", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ urls: likedUrls }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Liked URLs pushed successfully:", data);
+    })
+    .catch((error) => {
+      console.error("Error pushing liked URLs:", error);
+    });
+}
+
 // first 5 cards
 for (let i = 0; i < 5; i++) {
   appendNewCard();
 }
-
-const concatenatedNames = likedImages.map(name => name.split(".")[0]).join(", ");
-console.log(concatenatedNames); // Output: "example1, example2, example3"
