@@ -1,0 +1,75 @@
+:root {
+  --purple-color: #432093;
+  --white-color: white;
+  --blue-color: #90dafd;
+  --bluedark-color: #0a0aff;
+  --purpledark-color: #22104c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Space Grotesk", sans-serif;
+  place-content: center;
+  overflow: hidden;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: space-evenly;
+  align-items: center;
+
+  color: var(--white-color);
+
+  background-image: linear-gradient(
+    to top left,
+    var(--blue-color) 0%,
+    #90a9fd 20%,
+    #9d90fd 40%,
+    var(--purple-color) 60%,
+    #2e0a82 80%
+  );
+
+  background-size: 200% 200%;
+
+  animation: movimiento 5s linear infinite alternate;
+}
+
+@keyframes movimiento {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+#swiper {
+  height: 70vh;
+  aspect-ratio: 2 / 3;
+  perspective: 1000px;
+  perspective-origin: center 50%;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.asset {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 20px;
+  transform: translateZ(calc(-30px * var(--i)))
+    translateY(calc(-20px * var(--i))) rotate(calc(-4deg * var(--i)));
+}
+
+.asset img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
