@@ -5,12 +5,17 @@ const dislike = document.querySelector("#dislike");
 
 // constants
 const urls = [
-  "../assets/1.svg",
-  "../assets/2.svg",
-  "../assets/3.svg",
-  "../assets/4.svg",
-  "../assets/5.svg",
+  "./assets/Buzz.svg",
+  "./assets/Minion.svg",
+  "./assets/Phone_Yellow.svg",
+  "./assets/Rabbit.svg",
+  "./assets/Rainbow.svg",
 ];
+
+const nameWithouExtension = urls.split(".")[0];
+console.log(nameWithouExtension);
+
+const concatenateNames = urls.map((name) => name.split("."[0]).join(", "));
 
 // variables
 let cardCount = 0;
