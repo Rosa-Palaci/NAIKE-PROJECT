@@ -5,7 +5,7 @@ var request = require('request')
 let uri, path;
 // Get from html request (GET)
 uri = 'https://www.google.com/images/srpr/logo3w.png'; 
-path = './src/result.png';
+path = './src/assets/result.png';
 // Manage import images
 const download = (uri, filename, callback) =>{
     request.head(uri, (err, res, body) =>{
