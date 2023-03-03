@@ -20,3 +20,5 @@ async function apiHandler(text){
     .then(response => response.json())
     .then(response => console.log(response.message))
 }
+
+apiHandler('Dog')
