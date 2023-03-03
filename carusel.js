@@ -12,10 +12,7 @@ const urls = [
   "./assets/Rainbow.svg",
 ];
 
-const nameWithouExtension = urls.split(".")[0];
-console.log(nameWithouExtension);
-
-const concatenateNames = urls.map((name) => name.split("."[0]).join(", "));
+const likedImages = []
 
 // variables
 let cardCount = 0;
@@ -28,6 +25,7 @@ function appendNewCard() {
     onLike: () => {
       like.style.animationPlayState = "running";
       like.classList.toggle("trigger");
+      likedImages.push(imageUrl) 
     },
     onDislike: () => {
       dislike.style.animationPlayState = "running";
@@ -47,3 +45,6 @@ function appendNewCard() {
 for (let i = 0; i < 5; i++) {
   appendNewCard();
 }
+
+const concatenatedNames = likedImages.map(name => name.split(".")[0]).join(", ");
+console.log(concatenatedNames); // Output: "example1, example2, example3"
