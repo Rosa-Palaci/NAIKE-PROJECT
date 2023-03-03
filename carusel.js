@@ -28,17 +28,25 @@ function appendNewCard() {
       const currentUrl = urls[cardCount % 5];
       likedUrls +=
         urls[cardCount % 5].substring(9, urls[cardCount % 5].length - 4) + " ";
-      if (cardCount === 5) {
-        apiHandler(likedUrls);
+      if (cardCount === 4) {
+        document.getElementById("text-result").innerHTML = likedUrls;
+        console.log(likedUrls);
       }
+      cardCount++;
     },
     onDislike: () => {
       dislike.style.animationPlayState = "running";
       dislike.classList.toggle("trigger");
+      if (cardCount === 4) {
+        document.getElementById("text-result").innerHTML(likedUrls);
+        console.log(likedUrls);
+      }
+      console.log(likedUrls);
+      console.log(cardCount);
+      cardCount++;
     },
   });
   swiper.append(card.element);
-  cardCount++;
 
   const cards = swiper.querySelectorAll(".card:not(.dismissing)");
   cards.forEach((card, index) => {
@@ -49,23 +57,4 @@ function appendNewCard() {
 // first 5 cards
 for (let i = 0; i < 5; i++) {
   appendNewCard();
-}
-
-// Api handler
-async function apiHandler(text) {
-  // Query and image generated.
-
-  // Response from the Api.
-  response = await fetch("http://20.234.7.9/generate", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      prompt: text,
-    }),
-  })
-    .then((response) => response.json())
-    .then((response) => console.log(response.message));
 }
